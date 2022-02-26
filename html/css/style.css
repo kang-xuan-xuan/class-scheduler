@@ -1,0 +1,30 @@
+body{
+    background-color: antiquewhite;
+    color:crimson;
+    font-weight: normal;
+    line-height: 1.2em;
+    margin: 0;
+    /*
+    text-align: center;
+    */
+}
+
+.resize{
+    width: 80%;
+    margin: auto;
+}
+
+.box{
+    background-color: aquamarine;
+    color: blue;
+    width: 80%;
+    margin: auto;
+
+    /*
+    border-left: 15px yellow solid;
+    border-right: 15px yellow solid;
+    border-top: 15px yellow solid;
+    border-bottom: 15px yellow solid;
+    */
+    border: 15px blueviolet solid;
+}
