@@ -1,22 +1,69 @@
 body{
     background-color: antiquewhite;
-    color:rgb(145, 70, 70);
+    color: rgb(59, 56, 56);
     font-weight: normal;
     line-height: 1.2em;
     margin: 0;
-    /*
-    text-align: center;
-    */
 }
 
-h1{
-    text-align: center;
+.header{
+    margin-left: 21%;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 5% 90%;
+    grid-template-rows: 65% 35%;
+    height: auto;
+    color: rgba(187, 15, 15, 0.918);
 }
 
-.resize{
-    width: 80%;
+.header_pic{
+    grid-column: 1 / 1;
+    grid-row: 1 /-1;
+    border-radius: 50px;
+}
+
+.header_h1{
+    grid-column: 2 / -1;
+    grid-row: 1 / 1;
+    margin-left: 17%;
+}
+
+.header_pages{
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+    margin-left: 5%;
+}
+
+.pages{
+    width: 66%;
+
+    display: grid;
+    grid-template-columns: 7% 15% 15% 15% 15% 25% ;
+    grid-template-rows: 24px;
+
+    color: rgb(138, 30, 132);
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+
+    border-radius: 1in;
+    border: 3px rgb(43, 168, 226) solid;
+}
+
+.para_resize{
+    width: 60%;
     margin: auto;
+    text-align: justify;
 }
+
+.h2{
+    color: rgba(187, 15, 15, 0.918);
+}
+
+.feedback{
+    margin-left: 20%;
+}
+
 
 .box{
     background-color: aquamarine;
@@ -47,4 +94,36 @@ h1{
     */
     padding: 2px;
     
+}
+
+.grid{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 15% 60% 25%;
+    /*
+    grid-template-rows: 20px 100px 20px;
+    */
+    
+    grid-template-rows: repeat(12, 30px);
+    
+}
+
+
+
+.menu{
+    background-color: yellow;
+    grid-column: 1 / 1;
+    grid-row: 2 /-1;
+}
+
+.content{
+    background-color: gray;
+    grid-column: 2 / -1;
+    grid-row: 2 / 12;
+}
+
+.footer{
+    background-color: white;
+    grid-column: 1 / -1;
+    grid-row: 12 / -1;
 }
