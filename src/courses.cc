@@ -6,7 +6,6 @@
 #include <sstream>
 #include <cctype>
 #include <algorithm>
-#include <unordered_map>
 
 using namespace std;
 Courses::Courses(vector<string> courses){
@@ -71,20 +70,19 @@ void Courses::createSchedule(vector<Title*> &Titlees) {
     for (Course* course : Title->getcourse()) {
       int crn = course->CRN;
       string time = course->time;
-      int t1 = 0, t2 = 0, i = 0;
-      while (i == 0 || i == 1 || i == 3 || i == 4) {
-        t1 *= 10;
-        t1 += (time[i] - '0');
-        i++;
+      if (time[0] - '0' > 10) continue;
+      int t1 = 0, t2 = 0;
+      for (int i = 0; i < 16; ++i) {
+        if (i == 0 || i == 1 || i == 3 || i == 4) {
+          t1 *= 10;
+          t1 += (time[i] - '0');
+        } else if (i == 10 || i == 11 || i == 13 || i == 14) {
+          t2 *= 10;
+          t2 += (time[i] - '0');
+        }
       }
-      if (time[5] == 'P') t1 += 1200;
-      i = 10;
-      while (i == 10 || i == 11 || i == 13 || i == 14) {
-        t2 *= 10;
-        t2 += (time[i] - '0');
-        i++;
-      }
-      if (time[15] == 'P') t2 += 1200;
+      if (time[5] == 'P' && t1 < 1200) t1 += 1200;
+      if (time[15] == 'P' && t2 < 1200) t2 += 1200;
       timeSlots.push_back({t1, t2, crn});
     }
     dict[Title] = timeSlots;
@@ -100,7 +98,7 @@ void Courses::createSchedule(vector<Title*> &Titlees) {
   }
 }
 
-void backTrack(vector<tuple<int, int, int>> &list, vector<vector<tuple<int, int, int>>> &Q,
+void Courses::backTrack(vector<tuple<int, int, int>> &list, vector<vector<tuple<int, int, int>>> &Q,
               unordered_map<Title*,vector<tuple<int, int, int>>> &dict, vector<Title*> &Titlees, unsigned int c) {
   if (c == Titlees.size()) {
     Q.push_back(list);
@@ -109,7 +107,7 @@ void backTrack(vector<tuple<int, int, int>> &list, vector<vector<tuple<int, int,
   for (tuple<int, int, int> p : dict[Titlees[c]]) {
     bool flag = true;
     for (tuple<int, int, int> t : list) {
-      if (get<1>(t) < get<0>(p) || get<0>(t) > get<1>(p)) {
+      if (!(get<1>(t) < get<0>(p) || get<0>(t) > get<1>(p))) {
         flag = false;
         break;
       }
