@@ -9,7 +9,7 @@ This is a project focused on __xxx__.
 This project can be built and run in __xxx__. To build and run this project, run code:  
 ```
 $ make  
-$ ./main  
+$ ./bin/exec
 ```
 
 ### Test Cases  
